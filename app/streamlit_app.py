@@ -21,6 +21,8 @@ DATA = Path("data")
 items_meta = pd.DataFrame()
 try:
     items_meta = pd.read_csv(DATA / "items_meta.csv")
+    # Clean up image URLs
+    items_meta["image_url"] = items_meta["image_url"].astype(str).str.strip()
 except Exception as e:
     st.warning(f"⚠️ Could not load items_meta.csv, fallback will be empty. Error: {e}")
 
@@ -34,10 +36,7 @@ alpha = st.slider("Hybrid weight (collaborative vs content)", 0.0, 1.0, 0.6)
 # -------------------------------
 # Button click: Recommendations
 # -------------------------------
-# -------------------------------
-# Button click: Recommendations
-# -------------------------------
-recs = None   # <--- add this line here
+recs = None
 
 if st.button("Get Recommendations"):
     try:
@@ -56,27 +55,21 @@ if st.button("Get Recommendations"):
         else:
             recs = pd.DataFrame()
 
-
     # -------------------------------
     # Display recommendations
     # -------------------------------
-    # -------------------------------
-# Display recommendations
-# -------------------------------
-if recs is not None and not recs.empty:
-    cols = st.columns(4)
-    for idx, row in recs.reset_index(drop=True).iterrows():
-        col = cols[idx % 4]
-        with col:
-            if "image_url" in row.index and pd.notna(row["image_url"]) and row["image_url"].startswith("http"):
-    st.image(
-        row["image_url"],
-        caption=f"{row.get('title','Item')} (score: {row['score']:.3f})",
-        use_column_width=True,
-    )
-
-            st.write(f"**Category:** {row.get('category','N/A')}")
-            st.write(f"**Price:** ₹{int(row.get('price',0))}")
-else:
-    st.error("❌ No recommendations available.")
-
+    if recs is not None and not recs.empty:
+        cols = st.columns(4)
+        for idx, row in recs.reset_index(drop=True).iterrows():
+            col = cols[idx % 4]
+            with col:
+                if "image_url" in row.index and pd.notna(row["image_url"]) and row["image_url"].startswith("http"):
+                    st.image(
+                        row["image_url"],
+                        caption=f"{row.get('title','Item')} (score: {row['score']:.3f})",
+                        use_column_width=True,
+                    )
+                st.write(f"**Category:** {row.get('category','N/A')}")
+                st.write(f"**Price:** ₹{int(row.get('price',0))}")
+    else:
+        st.error("❌ No recommendations available.")

@@ -34,6 +34,11 @@ alpha = st.slider("Hybrid weight (collaborative vs content)", 0.0, 1.0, 0.6)
 # -------------------------------
 # Button click: Recommendations
 # -------------------------------
+# -------------------------------
+# Button click: Recommendations
+# -------------------------------
+recs = None   # <--- add this line here
+
 if st.button("Get Recommendations"):
     try:
         if MODEL_AVAILABLE:
@@ -42,16 +47,15 @@ if st.button("Get Recommendations"):
                 raise ValueError("Model returned no results.")
         else:
             raise ImportError("No trained model available.")
-
     except Exception as e:
         st.info("ℹ️ Showing demo recommendations (sample data only).")
 
-        # Fallback: pick random items from metadata
         if not items_meta.empty:
             recs = items_meta.sample(n=topk, replace=True).copy()
             recs["score"] = 0.5
         else:
             recs = pd.DataFrame()
+
 
     # -------------------------------
     # Display recommendations

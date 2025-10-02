@@ -56,18 +56,22 @@ if st.button("Get Recommendations"):
     # -------------------------------
     # Display recommendations
     # -------------------------------
-    if recs is not None and not recs.empty:
-        cols = st.columns(4)
-        for idx, row in recs.reset_index(drop=True).iterrows():
-            col = cols[idx % 4]
-            with col:
-                if "image_url" in row and pd.notna(row["image_url"]):
-                    st.image(
-                        row["image_url"],
-                        caption=f"{row.get('title','Item')} (score: {row['score']:.3f})",
-                        use_column_width=True,
-                    )
-                st.write(f"**Category:** {row.get('category','N/A')}")
-                st.write(f"**Price:** ₹{int(row.get('price',0))}")
+    # -------------------------------
+# Display recommendations
+# -------------------------------
+if recs is not None and not recs.empty:
+    cols = st.columns(4)
+    for idx, row in recs.reset_index(drop=True).iterrows():
+        col = cols[idx % 4]
+        with col:
+            if "image_url" in row.index and pd.notna(row["image_url"]):
+                st.image(
+                    row["image_url"],
+                    caption=f"{row.get('title','Item')} (score: {row['score']:.3f})",
+                    use_column_width=True,
+                )
+            st.write(f"**Category:** {row.get('category','N/A')}")
+            st.write(f"**Price:** ₹{int(row.get('price',0))}")
+
     else:
         st.error("❌ No recommendations available.")

@@ -69,11 +69,12 @@ if recs is not None and not recs.empty:
         col = cols[idx % 4]
         with col:
             if "image_url" in row.index and pd.notna(row["image_url"]) and row["image_url"].startswith("http"):
-                st.image(
-                    row["image_url"],
-                    caption=f"{row.get('title','Item')} (score: {row['score']:.3f})",
-                    use_column_width=True,
-                )
+    st.image(
+        row["image_url"],
+        caption=f"{row.get('title','Item')} (score: {row['score']:.3f})",
+        use_column_width=True,
+    )
+
             st.write(f"**Category:** {row.get('category','N/A')}")
             st.write(f"**Price:** ₹{int(row.get('price',0))}")
 else:

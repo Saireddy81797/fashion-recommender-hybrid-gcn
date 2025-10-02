@@ -44,7 +44,7 @@ if st.button("Get Recommendations"):
             raise ImportError("No trained model available.")
 
     except Exception as e:
-        st.warning(f"⚠️ Using fallback demo mode because: {e}")
+        st.info("ℹ️ Showing demo recommendations (sample data only).")
 
         # Fallback: pick random items from metadata
         if not items_meta.empty:

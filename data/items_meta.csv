@@ -1,1 +1,9 @@
-
+item_id,title,category,price,image_url
+1,Red T-Shirt,Tops,499,https://via.placeholder.com/200x250.png?text=Red+T-Shirt
+2,Blue Jeans,Bottoms,1299,https://via.placeholder.com/200x250.png?text=Blue+Jeans
+3,Black Sneakers,Shoes,1999,https://via.placeholder.com/200x250.png?text=Black+Sneakers
+4,White Dress,Tops,1499,https://via.placeholder.com/200x250.png?text=White+Dress
+5,Leather Jacket,Outerwear,2499,https://via.placeholder.com/200x250.png?text=Leather+Jacket
+6,Summer Shorts,Bottoms,799,https://via.placeholder.com/200x250.png?text=Summer+Shorts
+7,Sport Watch,Accessories,2999,https://via.placeholder.com/200x250.png?text=Sport+Watch
+8,Handbag,Accessories,1799,https://via.placeholder.com/200x250.png?text=Handbag

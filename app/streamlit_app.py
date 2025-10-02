@@ -2,8 +2,11 @@
 import streamlit as st
 import pandas as pd
 from pathlib import Path
+import sys, os
 
-# ✅ Clean import from src package
+# ✅ Ensure parent directory is in sys.path so "src" is visible
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from src.hybrid_inference import recommend_for_user
 
 # -------------------------------

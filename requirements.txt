@@ -1,0 +1,17 @@
+# basics
+python>=3.9
+numpy
+pandas
+scikit-learn
+tqdm
+streamlit
+
+# torch
+torch>=1.13
+torchvision
+
+# sentence transformers for content embeddings
+sentence-transformers
+
+# for saving/loading models
+joblib

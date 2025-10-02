@@ -1,7 +1,7 @@
 # streamlit_app.py
 import streamlit as st
 import pandas as pd
-from hybrid_inference import recommend_for_user
+from src.hybrid_inference import recommend_for_user
 from pathlib import Path
 
 st.set_page_config(layout="wide", page_title="Fashion Recommender Demo")

@@ -1,9 +1,9 @@
 item_id,title,category,price,image_url
-1,Red T-Shirt,Tops,499,https://media.istockphoto.com/id/1133815788/vector/red-t-shirt-vector-for-template.jpg?s=2048x2048&w=is&k=20&c=cvwL2Jd5zVc3Taqc1EENkxa0Av993vJCknYU4_skpZM=
-2,Blue Jeans,Bottoms,1299,https://images.unsplash.com/photo-1514996937319-344454492b37
-3,Black Sneakers,Shoes,1999,https://images.unsplash.com/photo-1600185365926-3a2ce9b8b3cd
-4,White Dress,Tops,1499,https://images.unsplash.com/photo-1503342217505-b0a15ec3261c
-5,Leather Jacket,Outerwear,2499,https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f
-6,Summer Shorts,Bottoms,799,https://images.unsplash.com/photo-1584378868070-3fd86c2bffe1
-7,Sport Watch,Accessories,2999,https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b
-8,Handbag,Accessories,1799,https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f
+1,Red T-Shirt,Tops,499,https://source.unsplash.com/500x600/?red+t-shirt
+2,Blue Jeans,Bottoms,1299,https://source.unsplash.com/500x600/?blue+jeans
+3,Black Sneakers,Shoes,1999,https://source.unsplash.com/500x600/?black+sneakers
+4,White Dress,Tops,1499,https://source.unsplash.com/500x600/?white+dress
+5,Leather Jacket,Outerwear,2499,https://source.unsplash.com/500x600/?leather+jacket
+6,Summer Shorts,Bottoms,799,https://source.unsplash.com/500x600/?summer+shorts
+7,Sport Watch,Accessories,2999,https://source.unsplash.com/500x600/?sport+watch
+8,Handbag,Accessories,1799,https://source.unsplash.com/500x600/?handbag

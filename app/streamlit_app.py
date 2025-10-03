@@ -14,7 +14,7 @@ except Exception:
 # Streamlit UI setup
 # -------------------------------
 st.set_page_config(layout="wide", page_title="Fashion Recommender Demo")
-st.title("Personalized Fashion Recommender — Demo")
+st.title("👗 Personalized Fashion Recommender — Demo")
 
 # Load metadata
 DATA = Path("data")
@@ -26,7 +26,9 @@ try:
 except Exception as e:
     st.warning(f"⚠️ Could not load items_meta.csv, fallback will be empty. Error: {e}")
 
+# -------------------------------
 # User input section
+# -------------------------------
 st.markdown("### Select a user to view recommendations")
 user_id = st.number_input("user_id (0..)", min_value=0, max_value=200000, value=0, step=1)
 
@@ -56,20 +58,25 @@ if st.button("Get Recommendations"):
             recs = pd.DataFrame()
 
     # -------------------------------
-    # Display recommendations
+    # Display recommendations as cards
     # -------------------------------
     if recs is not None and not recs.empty:
+        st.markdown("## 🎯 Recommended Products")
         cols = st.columns(4)
         for idx, row in recs.reset_index(drop=True).iterrows():
             col = cols[idx % 4]
             with col:
-                if "image_url" in row.index and pd.notna(row["image_url"]) and row["image_url"].startswith("http"):
-                    st.image(
-                        row["image_url"],
-                        caption=f"{row.get('title','Item')} (score: {row['score']:.3f})",
-                        use_column_width=True,
-                    )
-                st.write(f"**Category:** {row.get('category','N/A')}")
-                st.write(f"**Price:** ₹{int(row.get('price',0))}")
+                img_path = row.get("image_url", "")
+                if pd.notna(img_path):
+                    # ✅ Show both local and online images
+                    if img_path.startswith("http"):
+                        st.image(img_path, use_container_width=True)
+                    else:
+                        st.image(str(DATA / img_path), use_container_width=True)
+
+                st.markdown(f"**{row.get('title','Item')}**")
+                st.markdown(f"🛒 *Category:* {row.get('category','N/A')}")
+                st.markdown(f"💰 **₹{int(row.get('price',0))}**")
+                st.markdown("---")
     else:
         st.error("❌ No recommendations available.")

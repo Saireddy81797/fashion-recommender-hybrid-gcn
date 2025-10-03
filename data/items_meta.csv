@@ -1,9 +1,9 @@
 item_id,title,category,price,image_url
-1,Red T-Shirt,Tops,499,data/images/red_tshirt.jpg
-2,Blue Jeans,Bottoms,1299,data/images/blue_jeans.jpg
-3,Black Sneakers,Shoes,1999,data/images/black_sneakers.jpg
-4,White Dress,Tops,1499,data/images/white_dress.jpg
-5,Leather Jacket,Outerwear,2499,data/images/leather_jacket.jpg
-6,Summer Shorts,Bottoms,799,data/images/summer_shorts.jpg
-7,Sport Watch,Accessories,2999,data/images/sport_watch.jpg
-8,Handbag,Accessories,1799,data/images/handbag.jpg
+1,Red T-Shirt,Tops,499,https://raw.githubusercontent.com/Saireddy81797/fashion-recommender-hybrid-gcn/main/data/images/red_tshirt.webp
+2,Blue Jeans,Bottoms,1299,https://raw.githubusercontent.com/Saireddy81797/fashion-recommender-hybrid-gcn/main/data/images/blue_jeans.jpg
+3,Black Sneakers,Shoes,1999,https://raw.githubusercontent.com/Saireddy81797/fashion-recommender-hybrid-gcn/main/data/images/black_sneakers.jpg
+4,White Dress,Tops,1499,https://raw.githubusercontent.com/Saireddy81797/fashion-recommender-hybrid-gcn/main/data/images/white_dress.jpg
+5,Leather Jacket,Outerwear,2499,https://raw.githubusercontent.com/Saireddy81797/fashion-recommender-hybrid-gcn/main/data/images/leather_jacket.jpg
+6,Summer Shorts,Bottoms,799,https://raw.githubusercontent.com/Saireddy81797/fashion-recommender-hybrid-gcn/main/data/images/summer_shorts.jpg
+7,Sport Watch,Accessories,2999,https://raw.githubusercontent.com/Saireddy81797/fashion-recommender-hybrid-gcn/main/data/images/sport_watch.jpg
+8,Handbag,Accessories,1799,https://raw.githubusercontent.com/Saireddy81797/fashion-recommender-hybrid-gcn/main/data/images/handbag.jpg

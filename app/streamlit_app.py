@@ -55,13 +55,7 @@ if st.button("Get Recommendations"):
         else:
             recs = pd.DataFrame()
 
-    # -------------------------------
-    # Display recommendations as cards
-    # -------------------------------
-      # -------------------------------
-    # Display recommendations as cards
-    # -------------------------------
- # -------------------------------
+# -------------------------------
 # Display recommendations as cards
 # -------------------------------
 if recs is not None and not recs.empty:
@@ -77,24 +71,24 @@ if recs is not None and not recs.empty:
                 if img_path and img_path.lower() != "nan":
                     if img_path.startswith("http"):
                         # Online image
-                        st.image(img_path, use_container_width=True)
+                        st.image(img_path, use_column_width=True)
                     else:
                         # Local image
                         full_path = (DATA / img_path).resolve()
                         if full_path.exists():
-                            st.image(str(full_path), use_container_width=True)
+                            st.image(str(full_path), use_column_width=True)
                         else:
                             st.image("https://via.placeholder.com/300x400.png?text=No+Image",
-                                     use_container_width=True)
+                                     use_column_width=True)
                 else:
                     # If blank or NaN
                     st.image("https://via.placeholder.com/300x400.png?text=No+Image",
-                             use_container_width=True)
+                             use_column_width=True)
 
             except Exception as e:
                 # If st.image() fails anyway
                 st.image("https://via.placeholder.com/300x400.png?text=Invalid+Image",
-                         use_container_width=True)
+                         use_column_width=True)
                 st.caption(f"⚠️ Image error: {e}")
 
             # Product details

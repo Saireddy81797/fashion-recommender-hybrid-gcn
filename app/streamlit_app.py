@@ -63,25 +63,31 @@ if st.button("Get Recommendations"):
         cols = st.columns(4)
 
         for idx, row in recs.reset_index(drop=True).iterrows():
-            col = cols[idx % 4]
-            with col:
-                img_path = row.get("image_url", "")
+    col = cols[idx % 4]
+    with col:
+        img_path = str(row.get("image_url", "")).strip()
 
-                # ✅ Handle online + local + missing images safely
-                if pd.notna(img_path):
-                    if img_path.startswith("http"):
-                        st.image(img_path, use_container_width=True)
-                    else:
-                        full_path = (DATA / img_path).resolve()
-                        if full_path.exists():
-                            st.image(str(full_path), use_container_width=True)
-                        else:
-                            st.image("https://via.placeholder.com/300x400.png?text=No+Image",
-                                     use_container_width=True)
+        if img_path and img_path.lower() != "nan":
+            if img_path.startswith("http"):
+                # Online image
+                st.image(img_path, use_container_width=True)
+            else:
+                # Local image
+                full_path = (DATA / img_path).resolve()
+                if full_path.exists():
+                    st.image(str(full_path), use_container_width=True)
+                else:
+                    # Fallback placeholder
+                    st.image("https://via.placeholder.com/300x400.png?text=No+Image",
+                             use_container_width=True)
+        else:
+            # If completely missing, show placeholder
+            st.image("https://via.placeholder.com/300x400.png?text=No+Image",
+                     use_container_width=True)
 
-                st.markdown(f"**{row.get('title','Item')}**")
-                st.markdown(f"🛒 *Category:* {row.get('category','N/A')}")
-                st.markdown(f"💰 **₹{int(row.get('price',0))}**")
-                st.markdown("---")
-    else:
-        st.error("❌ No recommendations available.")
+        st.markdown(f"**{row.get('title','Item')}**")
+        st.markdown(f"🛒 *Category:* {row.get('category','N/A')}")
+        st.markdown(f"💰 **₹{int(row.get('price',0))}**")
+        st.markdown("---")
+
+       

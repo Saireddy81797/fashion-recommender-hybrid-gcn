@@ -21,7 +21,6 @@ DATA = Path("data")
 items_meta = pd.DataFrame()
 try:
     items_meta = pd.read_csv(DATA / "items_meta.csv")
-    # Clean up image URLs
     items_meta["image_url"] = items_meta["image_url"].astype(str).str.strip()
 except Exception as e:
     st.warning(f"⚠️ Could not load items_meta.csv, fallback will be empty. Error: {e}")
@@ -48,9 +47,8 @@ if st.button("Get Recommendations"):
                 raise ValueError("Model returned no results.")
         else:
             raise ImportError("No trained model available.")
-    except Exception as e:
+    except Exception:
         st.info("ℹ️ Showing demo recommendations (sample data only).")
-
         if not items_meta.empty:
             recs = items_meta.sample(n=topk, replace=True).copy()
             recs["score"] = 0.5
@@ -63,16 +61,23 @@ if st.button("Get Recommendations"):
     if recs is not None and not recs.empty:
         st.markdown("## 🎯 Recommended Products")
         cols = st.columns(4)
+
         for idx, row in recs.reset_index(drop=True).iterrows():
             col = cols[idx % 4]
             with col:
                 img_path = row.get("image_url", "")
+
+                # ✅ Handle online + local + missing images safely
                 if pd.notna(img_path):
-                    # ✅ Show both local and online images
                     if img_path.startswith("http"):
                         st.image(img_path, use_container_width=True)
                     else:
-                        st.image(str(DATA / img_path), use_container_width=True)
+                        full_path = (DATA / img_path).resolve()
+                        if full_path.exists():
+                            st.image(str(full_path), use_container_width=True)
+                        else:
+                            st.image("https://via.placeholder.com/300x400.png?text=No+Image",
+                                     use_container_width=True)
 
                 st.markdown(f"**{row.get('title','Item')}**")
                 st.markdown(f"🛒 *Category:* {row.get('category','N/A')}")
